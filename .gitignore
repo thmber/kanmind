@@ -1,7 +1,27 @@
 
 db.sqlite3
-.env
 
+
+*.pyc
+__pycache__/
+
+venv/
+env/
+*.env
+
+
+db.sqlite3
+media/
+
+.pytest_cache/
+
+.vscode/
+.idea/
+
+
+.DS_Store
+
+*.log
 
 
 

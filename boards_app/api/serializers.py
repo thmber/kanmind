@@ -60,7 +60,6 @@ class ShortTaskSerializer(serializers.ModelSerializer):
 
 
 class BoardReadSingleSerializer(serializers.ModelSerializer):
-    # tasks = TasksSerializer(many=True, read_only=True, fields=['id','title','description', 'status','priority', 'assignee','due_date'])
     tasks = ShortTaskSerializer(many=True, read_only=True)
     members = ShortUserSerializer(many=True, read_only=True)
 

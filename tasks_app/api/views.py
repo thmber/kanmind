@@ -15,12 +15,14 @@ class TasksCreate(generics.ListCreateAPIView):
         permission_classes = [IsAuthenticated] 
         serializer_class = TasksSerializer
 
+
         def get_queryset(self):
             user = self.request.user
             return Task.objects.filter(Q(board__members=user) | Q(board__owner_id=user)).distinct()
 
         def perform_create(self, serializer):
             serializer.save(creator=self.request.user) 
+
 
 
 class TasksDeleteOrUpdate(generics.RetrieveUpdateDestroyAPIView):
