@@ -7,7 +7,6 @@ from tasks_app.models import Task
 User = get_user_model()
 
 
-
 class BoardReadSerializer(serializers.ModelSerializer):
     member_count = serializers.SerializerMethodField()
     ticket_count = serializers.SerializerMethodField()
@@ -28,7 +27,7 @@ class BoardReadSerializer(serializers.ModelSerializer):
     def get_tasks_high_prio_count(self, obj):
         return obj.tasks.filter(priority='high').count()
 
-
+# this serializer is used for creating and updating boards
 
 class BoardWriteSerializer(serializers.ModelSerializer):
     members = serializers.PrimaryKeyRelatedField(queryset=get_user_model().objects.all(),many=True,required=False)
@@ -37,6 +36,8 @@ class BoardWriteSerializer(serializers.ModelSerializer):
         model = Board
         fields = ['title', 'members']
 
+    # this method creates a new board with the requesting user as owner and assigns members
+
     def create(self, validated_data):
         members = validated_data.pop('members', [])
         user = self.context['request'].user
@@ -44,6 +45,8 @@ class BoardWriteSerializer(serializers.ModelSerializer):
         board.members.set(members)
         return board
 
+
+# this serializer provides detailed view of a single board including its tasks and members
 
 class ShortTaskSerializer(serializers.ModelSerializer):
     reviewer = ShortUserSerializer(many=True, read_only=True)
@@ -57,7 +60,7 @@ class ShortTaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = ['id', 'title', 'description', 'status', 'priority', 'assignee', 'reviewer','due_date', 'comments_count']
 
-
+# here we define the serializer for detailed board view
 
 class BoardReadSingleSerializer(serializers.ModelSerializer):
     tasks = ShortTaskSerializer(many=True, read_only=True)
