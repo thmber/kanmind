@@ -19,6 +19,8 @@ from django.urls import path, include
 from auth_app.api.views import RegisterView, LoginView, LogoutView, EmailCheckView
 
 
+# here we define the main URL patterns for the project
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/registration/', RegisterView.as_view(), name='register'),
