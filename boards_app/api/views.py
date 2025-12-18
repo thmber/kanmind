@@ -63,7 +63,8 @@ class BoardDeleteOrUpdate(generics.RetrieveUpdateDestroyAPIView):
         def perform_destroy(self, instance):
             if instance.owner != self.request.user:
                 raise PermissionDenied({"error": "Only the owner can delete the board."})
-            instance.delete() 
+            instance.delete()
+        
 
         def get_serializer_class(self):
             if self.request.method == "PATCH":
