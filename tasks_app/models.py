@@ -5,6 +5,7 @@ from django.utils import timezone
 from datetime import timedelta
 
 
+# here we define the Task model which represents a task within a board, with various attributes and relationships
 
 class Task(models.Model):
     title = models.CharField(max_length=255)
@@ -23,6 +24,8 @@ class Task(models.Model):
         done = "done"
         review = "review"
 
+    # this field stores the due date of the task, defaulting to one week from creation
+
     due_date = models.DateField(default=one_week_from_now, blank=True)
     status = models.CharField(max_length=20,choices=Status.choices,default=Status.todo)
 
@@ -37,6 +40,7 @@ class Task(models.Model):
         return self.title
     
 
+# here we define the TaskComment model which represents comments made on tasks by users
 
 class TaskComment(models.Model):
     task = models.ForeignKey(Task, related_name='comments', on_delete=models.CASCADE)

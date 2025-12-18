@@ -3,7 +3,7 @@ from django.db import models
 from boards_app.models import Board
 
 
-
+# here we define a custom user model with email and fullname as unique identifiers
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, fullname, password, **extra_fields):
@@ -24,6 +24,8 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(email, fullname, **extra_fields)
 
+
+# here we define the custom user model
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
