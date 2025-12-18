@@ -13,6 +13,8 @@ from django.core.exceptions import ValidationError
 
 User = get_user_model()
 
+# here we define the views for user registration, login, logout, and email checking
+
 class RegisterView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
@@ -27,6 +29,7 @@ class RegisterView(APIView):
                 }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+# here we define the login view which authenticates a user and returns an auth token
 
 class LoginView(APIView):
     permission_classes = [IsAuthenticated]
@@ -47,6 +50,7 @@ class LoginView(APIView):
             'user_id': user.id,
         }, status=status.HTTP_200_OK)
     
+# here we define the logout view which deletes the user's auth token
 
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
@@ -55,6 +59,8 @@ class LogoutView(APIView):
         request.user.auth_token.delete() 
         return Response({"message": "Logout successfull. Token deleted."}, status=status.HTTP_200_OK)
 
+
+# here we define the email check view which verifies if an email exists in the system
 
 class EmailCheckView(APIView):
     permission_classes = [AllowAny]
