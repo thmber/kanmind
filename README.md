@@ -24,4 +24,4 @@ email: admin@gmx.de
 <br>
 password: asdfasdf
 
-## :sunflower: Don't hesitate to try!
+# :rocket: Don't hesitate to try!
