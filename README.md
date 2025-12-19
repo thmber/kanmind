@@ -7,9 +7,11 @@ Data includes Users, Boards and Tasks.
 
 To test, you can register a new user or test with the following credentials: 
 
-!email: asdf@web.de
-!password: asdfasdf
-!fullname: chris chros
+<br>
+email: asdf@web.de
+<br>
+password: asdfasdf
+fullname: chris chros
 
 
 You can also log in as an :computer: admin: 
