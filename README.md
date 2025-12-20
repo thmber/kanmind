@@ -1,4 +1,4 @@
-## kanmind ##
+### kanmind ##
 
 This is a test-backend for development purposes. 
 Data includes Users, Boards and Tasks. 
@@ -7,13 +7,11 @@ Data includes Users, Boards and Tasks.
 
 To test, you can register a new user or test with the following credentials: 
 
-<br>
 email: asdf@web.de
 <br>
 password: asdfasdf
 <br>
 fullname: chris chros
-
 
 
 You can also log in as an :computer: admin: 
