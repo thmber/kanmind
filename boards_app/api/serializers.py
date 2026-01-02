@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from tasks_app.api.serializers import TasksSerializer, ShortUserSerializer
 from tasks_app.models import Task
 
+# this usermodel is used to reference users in the serializers, so that the build-in user model is overwritten
+
 User = get_user_model()
 
 
@@ -36,7 +38,7 @@ class BoardWriteSerializer(serializers.ModelSerializer):
         model = Board
         fields = ['title', 'members']
 
-    # this method creates a new board with the requesting user as owner and assigns members
+# this method creates a new board with the requesting user as owner and assigns members
 
     def create(self, validated_data):
         members = validated_data.pop('members', [])

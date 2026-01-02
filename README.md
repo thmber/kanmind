@@ -3,7 +3,7 @@
 This is a test-backend for development purposes. 
 Data includes Users, Boards and Tasks. 
 
-## :sunflower: Features
+## :sunflower: :sunflower: Features
 
 To test, you can register a new user or test with the following credentials: 
 
