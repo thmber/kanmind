@@ -32,7 +32,7 @@ class RegisterView(APIView):
 # here we define the login view which authenticates a user and returns an auth token
 
 class LoginView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     
     def post(self, request):
         email = request.data.get('email')
